@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>峥嵘岁月 - 1940-1953 历史长卷</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Zhi+Mang+Xing&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --deep-red: #4a0404;
+            --mahogany: #2d0a0a;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--mahogany);
+            margin: 0;
+            padding: 0;
+            color: #fef3c7;
+            overflow-x: hidden;
+        }
+
+        /* 高级丝绒质感背景 */
+        .epic-bg {
+            background: 
+                radial-gradient(circle at 50% -20%, #8b0000 0%, transparent 70%),
+                radial-gradient(circle at 0% 100%, #300 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, #300 0%, transparent 50%),
+                linear-gradient(to bottom, #2d0a0a, #1a0505);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* 模拟织物纹理 */
+        .texture-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            z-index: 1;
+            mix-blend-mode: overlay;
+        }
+
+        /* 顶部射灯效果 */
+        .spotlight {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* 隐藏滚动条但保留功能 */
+        .no-scrollbar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .no-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.3);
+        }
+        .no-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--primary-gold);
+            border-radius: 3px;
+        }
+
+        .cursive-font {
+            font-family: 'Zhi Mang Xing', cursive;
+        }
+
+        @media print {
+            .no-print { display: none; }
+        }
+
+        /* 卡片金边动画 */
+        .gold-border-glow {
+            box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 10px rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.8);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="epic-bg">
+    <div class="texture-overlay"></div>
+    <div class="spotlight"></div>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+    <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
